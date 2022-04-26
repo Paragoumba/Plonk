@@ -3,6 +3,20 @@ project(Plonk)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Plonk main.cpp)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
 
-target_link_libraries(Plonk SDL2 SDL2_ttf)
+find_package(Qt6 COMPONENTS
+        Core
+        Gui
+        Widgets
+        REQUIRED)
+
+add_executable(Plonk main.cpp ui/MainWindow.cpp ui/MainWindow.hpp ui/MainWindow.ui ui/App.cpp ui/App.hpp ui/App.ui)
+
+target_link_libraries(Plonk
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets
+        )
